@@ -22,7 +22,10 @@ public class PersonBuilder {
         return this;
     }
 
-    public String getName() {
+    public String getName() throws IllegalArgumentException {
+        if (this.age < 0) {
+            throw new IllegalArgumentException("Illegal age!");
+        }
         return name;
     }
 
@@ -39,9 +42,6 @@ public class PersonBuilder {
     }
 
     public Person build() throws IllegalArgumentException, IllegalStateException {
-        if (this.age < 0) {
-            throw new IllegalArgumentException("Illegal age!");
-        }
         if (this.name == null) {
             throw new IllegalStateException("Person without name!");
         }

@@ -59,6 +59,9 @@ public class Person {
         return this.surname;
     }
     public OptionalInt getAge() {
+        if (this.age == -1) {
+            return OptionalInt.empty();
+        }
         return OptionalInt.of(this.age);
     }
     public String getAddress() {
